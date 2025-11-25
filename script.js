@@ -39,6 +39,11 @@ function playRound(humanChoice) {
   const computerChoice = getComputerChoice();
   divChoice.textContent = `You chose ${humanChoice} Computer chose ${computerChoice}`;
 
+  if (humanScore >= 5 || computerScore >= 5) {
+    divChoice.textContent = `Game Over`;
+    return;
+  }
+
   if (humanChoice === 'rock' && computerChoice === 'paper') {
     computerScore++;
     divResult.textContent = `Computer won. Score: You ${humanScore} - ${computerScore} Computer`;
@@ -59,5 +64,11 @@ function playRound(humanChoice) {
     divResult.textContent = `Computer won. Score: You ${humanScore} - ${computerScore} Computer`;
   } else {
     divResult.textContent = `It's a tie! Score: You ${humanScore} - ${computerScore} Computer`;
+  }
+
+  if (humanScore === 5) {
+    divResult.textContent = `🎉 You won the game! Final score: ${humanScore} - ${computerScore}`;
+  } else if (computerScore === 5) {
+    divResult.textContent = `💀 Computer won the game. Final score: ${humanScore} - ${computerScore}`;
   }
 }
